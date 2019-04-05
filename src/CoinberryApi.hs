@@ -7,7 +7,7 @@ import Data.Aeson
 import Network.HTTP.Req
 import qualified Data.Text as T
 
-price :: Currency -> IO Price
+price :: MonadIO m => Currency -> m Price
 -- price baseCurrency = undefined
 price baseCurrency = do 
      j <- runReq defaultHttpConfig $
