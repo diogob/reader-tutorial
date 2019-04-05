@@ -7,3 +7,5 @@ packages:
 # Dependency packages to be pulled from upstream that are not in the resolver
 extra-deps:
 - envparse-0.4.1
+- req-2.0.1
+- retry-0.8.0.0
