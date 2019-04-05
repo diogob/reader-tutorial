@@ -7,7 +7,7 @@ import Control.Monad.Reader
 
 main :: IO ()
 main = do
-    config <- C.load
-    flip runReaderT config $ do
+    context <- C.makeContext print
+    flip runReaderT context $ do
         T.printURI 
         T.printQuiet
