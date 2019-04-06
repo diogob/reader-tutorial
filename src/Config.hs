@@ -26,7 +26,7 @@ makeContextWithConfig printFn config =
 -- private
 data Config =
     Config 
-    { uri :: String 
+    { currency :: String 
     , quiet :: Bool 
     } deriving (Show, Eq)
 
@@ -34,5 +34,5 @@ load :: (MonadIO m) => m Config
 load = 
         liftIO $ 
         Env.parse (header "Reader Tutorial") $
-        Config <$> var (str <=< nonempty) "URI" (help "URI to fetch data from")
+        Config <$> var (str <=< nonempty) "CURRENCY" (help "CURRENCY to fetch price from")
                 <*> switch "QUIET" (help "Suppress debug information")

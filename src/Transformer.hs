@@ -13,7 +13,7 @@ type App = ReaderT Context IO
 printURI :: App ()
 printURI = do
     ctx <- ask
-    liftIO $ ctxPrint ctx $ "The URI given to App is " <> uri (ctxConfig ctx)
+    liftIO $ ctxPrint ctx $ "The currency given to App is " <> currency (ctxConfig ctx)
 
 printQuiet :: App ()
 printQuiet = do

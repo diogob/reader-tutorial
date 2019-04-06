@@ -13,9 +13,9 @@ spec =
         it "Creates message using URI configuration from context" $ do
             result <- newIORef ""
             let 
-                config = Config "test-uri" True
+                config = Config "BTC" True
                 writeString = writeIORef result
             context <- makeContextWithConfig writeString config
             runReaderT printURI context
             resultString <- readIORef result
-            resultString `shouldBe` "The URI given to App is test-uri"
+            resultString `shouldBe` "The currency given to App is BTC"

@@ -16,12 +16,16 @@ The above command will install the appropriate compiler and build the project li
 
 ## Using a ReaderT
 
-Using functions from the module `CoinberryApi` and the `App` type provided by `Polymorphic` build a program that will fetch the prices for **BTC** and **ETH** and display then like this:
+Using functions from the module `CoinberryApi` and the `App` type provided by `Transformer` build a program that will fetch the prices for a given currency and display it.
+
+An example of usage would be:
 
 ``` 
-You can buy BTC for ...
-You can buy ETH for ... 
+CURRENCY=BTC stack exec price 
+You can buy BTC for 6761.49
 ```
+
+The currency should be passed in an environment variable and can be one of **BTC**, **ETH**, **LTC** or **XRP**.
 
 The program should use all effectful computations from the `Context`, never importing directly functions that run in `IO`.
 

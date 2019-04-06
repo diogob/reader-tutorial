@@ -10,4 +10,4 @@ import Control.Monad.Reader
 getURI :: Reader Config String
 getURI = do 
     config <- ask
-    pure $ "The URI given to Reader is " <> uri config
+    pure $ "The currency given to Reader is " <> currency config
