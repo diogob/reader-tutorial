@@ -1,7 +1,7 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 module Transformer
-    ( printURI
+    ( printCurrency
     , printQuiet
     ) where
 
@@ -10,8 +10,8 @@ import Control.Monad.Reader
 
 type App = ReaderT Context IO
 
-printURI :: App ()
-printURI = do
+printCurrency :: App ()
+printCurrency = do
     ctx <- ask
     liftIO $ ctxPrint ctx $ "The currency given to App is " <> currency (ctxConfig ctx)
 

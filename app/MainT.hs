@@ -9,5 +9,5 @@ main :: IO ()
 main = do
     context <- C.makeContext print
     flip runReaderT context $ do
-        T.printURI 
+        T.printCurrency 
         T.printQuiet
