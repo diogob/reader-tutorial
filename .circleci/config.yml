@@ -28,11 +28,8 @@ jobs:
           name: Run tests
           command: stack test
       - run:
-          name: Install executable
-          command: stack --silent install
-      - run:
-          name: Calculate and save checksum
-          command: sha256sum ~/.local/bin/reader-tutorial > ~/.local/bin/reader-tutorial.sha256
+          name: run linter
+          command: git ls-files | grep '\.l\?hs$' | xargs stack exec -- hlint -X QuasiQuotes -X NoPatternSynonyms "$@"
       - save_cache:
           name: Cache Dependencies
           key: reader-tutorial-v2-{{ checksum "stack.yaml" }}

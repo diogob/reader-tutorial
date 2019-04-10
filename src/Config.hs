@@ -17,7 +17,7 @@ data Context =
 
 makeContext :: MonadIO m => (String -> IO ()) -> m Context
 makeContext p =
-    load >>= (makeContextWithConfig p)
+    load >>= makeContextWithConfig p
 
 makeContextWithConfig :: MonadIO m => (String -> IO ()) -> Config -> m Context
 makeContextWithConfig printFn config = 

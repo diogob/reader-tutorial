@@ -11,7 +11,7 @@ price :: MonadIO m => Currency -> m Price
 -- price baseCurrency = undefined
 price baseCurrency = do 
      j <- runReq defaultHttpConfig $
-         req GET (https "api.coinberry.com" /: "prices" /: "CAD" /: (T.pack $ show baseCurrency)) NoReqBody jsonResponse mempty
+         req GET (https "api.coinberry.com" /: "prices" /: "CAD" /: T.pack (show baseCurrency)) NoReqBody jsonResponse mempty
      pure $ responseBody j
 
 data Price = 

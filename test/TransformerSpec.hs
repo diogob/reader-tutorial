@@ -11,7 +11,7 @@ spec :: Spec
 spec =
     describe "Transformer" $ do
         describe "printPrice" $
-            it "Creates message using prices from API" $ do
+            it "Creates message using prices from API" $
                 pendingWith "Create a spec for printPrice similar to printCurrency bellow and then implement Transformer.printCurrency"
 
         describe "printCurrency" $

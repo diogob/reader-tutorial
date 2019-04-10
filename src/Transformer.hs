@@ -12,7 +12,7 @@ import Control.Monad.Reader
 type App = ReaderT Context IO
 
 printPrice :: App ()
-printPrice = (error "please implement printPrice to fetch currency price")
+printPrice = error "please implement printPrice to fetch currency price"
 
 printCurrency :: App ()
 printCurrency = do
