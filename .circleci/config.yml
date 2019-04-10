@@ -8,34 +8,29 @@ jobs:
       - restore_cache:
           name: Restore Cached Dependencies
           keys:
-            - reader-tutorial-v2-{{ checksum "stack.yaml" }}
+            - reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}
       - run:
           name: Resolve and update dependencies
           command: stack setup
       - run:
           name: Install Cabal and hlint
           command: stack install --system-ghc --resolver=lts-13.14 Cabal hlint
-      - save_cache:
-          name: Cache Dependencies
-          key: reader-tutorial-v2-{{ checksum "stack.yaml" }}
-          paths:
-            - ".stack"
-            - ".stack-work"
       - run:
           name: Build the dependencies and the library
           command: stack --silent build
+      - save_cache:
+          name: Cache Build
+          key: reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}
+          paths:
+            - ".stack"
+            - ".stack-work"
+            - ".local"
       - run:
           name: Run tests
           command: stack test
       - run:
           name: run linter
           command: git ls-files | grep '\.l\?hs$' | xargs stack exec -- hlint -X QuasiQuotes -X NoPatternSynonyms "$@"
-      - save_cache:
-          name: Cache Dependencies
-          key: reader-tutorial-v2-{{ checksum "stack.yaml" }}
-          paths:
-            - ".stack"
-            - ".stack-work"
 
 workflows:
   version: 2
