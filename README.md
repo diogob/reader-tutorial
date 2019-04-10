@@ -1,4 +1,4 @@
-# ReaderT Tutorial
+# ReaderT Tutorial [![CircleCI](https://circleci.com/gh/diogob/reader-tutorial.svg?style=svg)](https://circleci.com/gh/diogob/reader-tutorial)
 
 ## Quickstart
 
