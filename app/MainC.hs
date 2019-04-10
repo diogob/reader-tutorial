@@ -8,5 +8,5 @@ import Control.Monad.Reader
 main :: IO ()
 main = do
     config <- Config.load
-    print $ runReader C.getURI config
+    print $ runReader C.getCurrency config
     

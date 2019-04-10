@@ -1,13 +1,13 @@
 {-# LANGUAGE FlexibleContexts #-}
 
 module Concrete
-    ( getURI
+    ( getCurrency
     ) where
 
 import Config
 import Control.Monad.Reader
 
-getURI :: Reader Config String
-getURI = do 
+getCurrency :: Reader Config String
+getCurrency = do 
     config <- ask
     pure $ "The currency given to Reader is " <> currency config

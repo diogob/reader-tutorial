@@ -11,9 +11,11 @@ import Control.Monad.Reader
 
 type App = ReaderT Context IO
 
+-- | Function to be implemented.
 printPrice :: App ()
 printPrice = error "please implement printPrice to fetch currency price"
 
+-- | Using the configuration and print function from Context will print the Currency
 printCurrency :: App ()
 printCurrency = do
     ctx <- ask
