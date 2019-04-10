@@ -10,6 +10,4 @@ main = do
     context <- C.makeContext print
     flip runReaderT context $ do
         T.printCurrency
-        printPrice
-    where 
-        printPrice = (error "please implement printPrice to fetch currency price")
+        T.printPrice
