@@ -7,8 +7,7 @@ jobs:
       - checkout
       - restore_cache:
           name: Restore Cached Dependencies
-          keys:
-            - reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}
+          key: reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}-{{ checksum ".circleci/config.yml" }}
       - run:
           name: Resolve and update dependencies
           command: stack setup
