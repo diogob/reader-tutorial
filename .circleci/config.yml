@@ -20,11 +20,12 @@ jobs:
           command: stack --silent build
       - save_cache:
           name: Cache Build
-          key: reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}
+          key: reader-tutorial-v2-{{ checksum "reader-tutorial.cabal" }}-{{ checksum ".circleci/config.yml" }}
           paths:
             - ".stack"
             - ".stack-work"
             - ".local"
+            - "/root/.stack"
       - run:
           name: Run tests
           command: stack test
