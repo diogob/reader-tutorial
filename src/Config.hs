@@ -7,6 +7,7 @@ module Config
     , load
     ) where
 
+import CoinberryApi
 import Env
 import Control.Monad.IO.Class
 
@@ -14,17 +15,18 @@ import Control.Monad.IO.Class
 data Context =
     Context { ctxPrint :: String -> IO ()
             , ctxConfig :: Config
+            , ctxPrice :: Currency -> IO Price
             }
 
 -- | This will load Config from OS environment variables. Change this to implement the `price` executable.
-makeContext :: MonadIO m => (String -> IO ()) -> m Context
-makeContext p =
-    load >>= makeContextWithConfig p
+makeContext :: MonadIO m => (String -> IO ()) -> (Currency -> IO Price) -> m Context
+makeContext p priceFn =
+    load >>= makeContextWithConfig p priceFn
 
 -- | This will build a Context with a given Config, useful for testing.
-makeContextWithConfig :: MonadIO m => (String -> IO ()) -> Config -> m Context
-makeContextWithConfig printFn config = 
-    pure $ Context printFn config
+makeContextWithConfig :: MonadIO m => (String -> IO ()) -> (Currency -> IO Price) -> Config -> m Context
+makeContextWithConfig printFn priceFn config = 
+    pure $ Context printFn config priceFn
 
 data Config =
     Config 
