@@ -6,6 +6,7 @@ module Transformer
     , printPrice
     ) where
 
+import CoinberryApi
 import Config
 import Control.Monad.Reader
 
@@ -13,7 +14,11 @@ type App = ReaderT Context IO
 
 -- | Function to be implemented.
 printPrice :: App ()
-printPrice = error "please implement printPrice to fetch currency price"
+printPrice = do
+    ctx <- ask
+    marketPrice <- liftIO . ctxPrice ctx . read . currency $ ctxConfig ctx
+    let cfgCurrency = currency (ctxConfig ctx)
+    liftIO $ ctxPrint ctx $ ("The price of " <> cfgCurrency) <> (" is " <> (buy marketPrice))
 
 -- | Using the configuration and print function from Context will print the Currency
 printCurrency :: App ()

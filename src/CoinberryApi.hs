@@ -1,5 +1,6 @@
 module CoinberryApi ( price
                     , Currency (..)
+                    , Price (..)
                     ) where
 
 import Control.Monad.IO.Class
@@ -27,4 +28,4 @@ instance FromJSON Price where
 
 
 data Currency = CAD | BTC | ETH | LTC | XRP 
-    deriving (Show)
+    deriving (Read, Show)
