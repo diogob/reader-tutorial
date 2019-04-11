@@ -11,7 +11,7 @@ import Transformer
 spec :: Spec
 spec =
     describe "Transformer" $ do
-        describe "printPrice" $ do
+        describe "printPrice" $
             it "Creates message using prices from API" $ do
                 result <- newIORef ""
                 let
